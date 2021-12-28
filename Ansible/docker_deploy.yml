@@ -1,0 +1,11 @@
+---
+  -name: Docker Deploy Playbook
+   hosts: My Ubuntu
+   tasks:
+        -name: Run skranking docker image
+         docker_container:
+            -name: skranking
+             image: "sk3699/skranking:{{DockerTag}}"
+             state: started
+             published_ports: 
+                - 0.0.0.0:8080:8080
