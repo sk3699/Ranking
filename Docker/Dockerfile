@@ -1,4 +1,4 @@
 FROM anapsix/alpine-java
 MAINTAINER sk3699
-COPY target/*.jar /home/sk/Ranking-0.0.1-SNAPSHOT.jar
+COPY target/*.jar /home/sk/Ranking.jar
 CMD ["java","-jar","/home/sk/Ranking.jar"]
