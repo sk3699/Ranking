@@ -22,6 +22,8 @@
     - name: Remove old skranking images
       docker_prune:
           images: yes
+          all: true
+          force: true
           images_filters:
               #dangling: true
               label: not repository sk3699/skranking
