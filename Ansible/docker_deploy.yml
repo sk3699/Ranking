@@ -22,10 +22,9 @@
     - name: Remove old skranking images
       docker_prune:
           images: yes
-          name: sk3699/skranking
           images_filters:
               dangling: true
-          state: absent
+              label: repository sk3699/skranking
     #- name: Remove dangling images
       #community.docker.docker_prune:
           #containers: no
