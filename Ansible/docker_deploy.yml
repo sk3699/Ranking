@@ -3,6 +3,7 @@
   hosts: MyUbuntu
   tasks:
     - name: Install Python pip
+      become: yes
       apt:
          update_cache: yes
          name: python3-pip
