@@ -4,11 +4,12 @@
   tasks:
     - name: Install Python pip
       apt:
-         name: python-pip
-         state: present
+         update_cache: yes
+         name: python3-pip
+         state: latest
     - name: Install Docker-py python module
       pip:
-         name: docker-py
+         name: docker
          state: present
     - name: Run skranking docker image
       docker_container:
