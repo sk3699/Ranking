@@ -24,7 +24,7 @@
           images: yes
           images_filters:
               #dangling: true
-              label: repository sk3699/skranking
+              label: not repository sk3699/skranking
     #- name: Remove dangling images
       #community.docker.docker_prune:
           #containers: no
