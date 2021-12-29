@@ -18,3 +18,4 @@
          pull: true
          image: "sk3699/skranking:{{DockerTag}}"
          state: started
+         interactive: true
