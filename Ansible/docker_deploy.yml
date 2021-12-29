@@ -19,3 +19,14 @@
          image: "sk3699/skranking:{{DockerTag}}"
          state: started
          interactive: true
+    #- name: Remove old skranking images
+      #docker_image:
+          #name: sk3699/skranking
+          #dangling: true
+          #state: absent
+    - name: Remove dangling images
+      community.docker.docker_prune:
+          containers: no
+          images: yes
+          images_filters:
+            dangling: false
