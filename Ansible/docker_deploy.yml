@@ -12,6 +12,9 @@
       #pip:
          #name: docker
          #state: present
+    - name: Remove old skranking images before
+      shell: |
+        docker image prune -a --filter label!=repository=sk3699/skranking;
     - name: Run skranking docker image
       docker_container:
          name: skranking
@@ -19,15 +22,9 @@
          image: "sk3699/skranking:{{DockerTag}}"
          state: started
          interactive: true
-    - name: Remove old skranking images
-      docker_prune:
-          images: yes
-          images_filters:
-              #dangling: true
-              label: not repository sk3699/skranking
-    #- name: Remove dangling images
-      #community.docker.docker_prune:
-          #containers: no
+    #- name: Remove old skranking images
+      #docker_prune:
           #images: yes
           #images_filters:
-            #dangling: false
+              #dangling: true
+              #label: not repository sk3699/skranking
