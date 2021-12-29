@@ -2,6 +2,14 @@
 - name: Docker Deploy Playbook
   hosts: MyUbuntu
   tasks:
+    - name: Install Python pip
+      apt:
+         name: python-pip
+         state: present
+    - name: Install Docker-py python module
+      pip:
+         name: docker-py
+         state: present
     - name: Run skranking docker image
       docker_container:
          name: skranking
