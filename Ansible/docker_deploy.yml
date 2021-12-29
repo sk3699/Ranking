@@ -4,6 +4,6 @@
   tasks:
     - name: Run skranking docker image
       docker_container:
-         - name: skranking
-           image: "sk3699/skranking:{{DockerTag}}"
-           state: started
+         name: skranking
+         image: "sk3699/skranking:{{DockerTag}}"
+         state: started
