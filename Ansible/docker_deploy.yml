@@ -1,6 +1,6 @@
 ---
   -name: Docker Deploy Playbook
-   hosts: My Ubuntu
+   hosts: MyUbuntu
    tasks:
         -name: Run skranking docker image
          docker_container:
