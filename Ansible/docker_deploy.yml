@@ -19,7 +19,7 @@
          image: "sk3699/skranking:{{DockerTag}}"
          state: started
          interactive: true
-    - name: Remove old skranking images before
+    - name: Remove old skranking images in Ubuntu
       shell: docker rmi -f $(docker images sk3699/skranking)
       ignore_errors: yes
       #shell: |
@@ -34,3 +34,10 @@
     
     #docker image prune -a --filter label!=repository=sk3699/skranking
     #docker rmi -f $(docker images sk3699/skranking)
+    
+- name: Docker delete sk3699/skranking in Ubuntu-18.04
+  hosts: MyUbuntu18_04
+  tasks:    
+    - name: Remove skranking images in Ubuntu-18.04
+      shell: docker rmi -f $(docker images sk3699/skranking)
+      ignore_errors: yes
