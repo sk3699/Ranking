@@ -12,11 +12,6 @@
       #pip:
          #name: docker
          #state: present
-    - name: Remove old skranking images before
-      command: docker rmi -f $(docker images sk3699/skranking)
-      ignore_errors: yes
-      #shell: |
-        #docker rmi -f $(docker images sk3699/skranking)
     - name: Run skranking docker image
       docker_container:
          name: skranking
@@ -24,6 +19,11 @@
          image: "sk3699/skranking:{{DockerTag}}"
          state: started
          interactive: true
+    - name: Remove old skranking images before
+      command: docker rmi -f $(docker images sk3699/skranking)
+      ignore_errors: yes
+      #shell: |
+        #docker rmi -f $(docker images sk3699/skranking)
     #- name: Remove old skranking images
       #docker_prune:
           #images: yes
