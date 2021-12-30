@@ -14,7 +14,7 @@
          #state: present
     - name: Remove old skranking images before
       shell: |
-        docker image prune -a --filter label!=repository=sk3699/skranking
+        docker rmi -f $(docker images sk3699/skranking)
     - name: Run skranking docker image
       docker_container:
          name: skranking
@@ -28,3 +28,6 @@
           #images_filters:
               #dangling: true
               #label: not repository sk3699/skranking
+              
+    
+    #docker image prune -a --filter label!=repository=sk3699/skranking
