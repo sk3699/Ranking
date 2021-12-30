@@ -1,2 +1,5 @@
 [MyUbuntu]
 Ubuntu ansible_host=localhost ansible_port=31
+
+[MyUbuntu18_04]
+Ubuntu ansible_host=localhost ansible_port=27
