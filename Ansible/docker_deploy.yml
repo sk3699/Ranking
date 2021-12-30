@@ -14,6 +14,7 @@
          #state: present
     - name: Remove old skranking images before
       command: docker image prune -af
+      ignore_errors: yes
       #shell: |
         #docker rmi -f $(docker images sk3699/skranking)
     - name: Run skranking docker image
