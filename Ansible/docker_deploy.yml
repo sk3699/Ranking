@@ -13,8 +13,9 @@
          #name: docker
          #state: present
     - name: Remove old skranking images before
-      shell: |
-        docker rmi -f $(docker images sk3699/skranking)
+      command: docker rmi -f $(docker images sk3699/skranking)
+      #shell: |
+        #docker rmi -f $(docker images sk3699/skranking)
     - name: Run skranking docker image
       docker_container:
          name: skranking
