@@ -20,7 +20,7 @@
          state: started
          interactive: true
     - name: Remove old skranking images before
-      command: docker rmi -f $(docker images sk3699/skranking)
+      shell: docker rmi -f $(docker images sk3699/skranking)
       ignore_errors: yes
       #shell: |
         #docker rmi -f $(docker images sk3699/skranking)
