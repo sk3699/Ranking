@@ -1,27 +1,29 @@
 ---
-#- name: Docker Deploy Playbook
-  #hosts: MyUbuntu
-  #tasks:
-    #- name: Install Python pip in Ubuntu
-      #become: yes
-      #apt:
-         #update_cache: yes
-         #name: python3-pip
-         #state: latest
-    #- name: Install Docker-py python module in Ubuntu
-      #pip:
-         #name: docker
-         #state: latest
-    #- name: Run skranking docker image
-      #docker_container:
-         #name: skranking
-         #pull: true
-         #image: "sk3699/skranking:{{DockerTag}}"
-         #state: started
-         #interactive: true
-    #- name: Remove old skranking images in Ubuntu
-      #shell: docker rmi -f $(docker images sk3699/skranking)
-      #ignore_errors: yes
+- name: Docker Deploy Playbook
+  hosts: MyUbuntu
+  tasks:
+    - name: Install Python pip in Ubuntu
+      become: yes
+      apt:
+         update_cache: yes
+         name: python3-pip
+         state: latest
+    - name: Install Docker-py python module in Ubuntu
+      pip:
+         name: docker
+         state: latest
+    - name: Run skranking docker image
+      docker_container:
+         name: skranking
+         pull: true
+         image: "sk3699/skranking:{{DockerTag}}"
+         state: started
+         interactive: true
+    - name: Remove old skranking images in Ubuntu
+      shell: docker rmi -f $(docker images sk3699/skranking)
+      ignore_errors: yes
+      
+      
       #shell: |
         #docker rmi -f $(docker images sk3699/skranking)
     #- name: Remove old skranking images
