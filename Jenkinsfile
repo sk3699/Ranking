@@ -1,3 +1,5 @@
+currentBuild.displayName = "Git_Maven_Docker-#"+currentBuild.number
+
 pipeline{
     agent any
     environment {
