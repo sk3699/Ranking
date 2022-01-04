@@ -1,0 +1,8 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: rankingapp
+spec:
+  selector:
+    app: rankingapp
+  type: LoadBalancer
