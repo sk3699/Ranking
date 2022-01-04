@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rankingapp
+  labels:
+    app: rankingapp
+spec:
+  containers:
+    - name: rankingapp
+      image: sk3699/skranking:tagname
