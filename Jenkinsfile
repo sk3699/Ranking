@@ -1,7 +1,7 @@
 currentBuild.displayName = "Ranking-#"+currentBuild.number
 
 pipeline{
-    agent any
+    agent { label 'U-18.04-sk' }
     environment {
       DockerTag = getVer()
     }
