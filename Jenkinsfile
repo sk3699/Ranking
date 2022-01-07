@@ -48,7 +48,7 @@ pipeline{
                 sh "chmod +x updateTag.sh"
                 sh "./updateTag.sh ${DockerTag}"
                 sshagent(['sk_Ubuntu_private_key']) {
-                    sh "scp -v -o StrictHostKeyChecking=no services.yml ranking-app-pod.yml -p 31 sk@localhost:/home/sk/"
+                    sh "scp -v -p 31 -o StrictHostKeyChecking=no services.yml ranking-app-pod.yml sk@localhost:/home/sk/"
                     script{
                         try{
                             sh "ssh -P 31 sk@localhost apply -f ."
