@@ -4,6 +4,7 @@ pipeline{
     agent { label 'U-18.04-sk' }
     environment {
       DockerTag = getVer()
+      Output = sh(script:'echo $(pwd) & echo $(lsb_release -a)')
     }
     stages{
         stage('Git Polling'){
@@ -45,7 +46,6 @@ pipeline{
         }
         stage('Kubernetes Deploy'){
             steps{
-                Output = sh(script:'echo $(pwd) & echo $(lsb_release -a)')
                 echo "from shell:  ${Output}"
                 sh "chmod +x updateTag.sh"
                 sh "./updateTag.sh ${DockerTag}"
