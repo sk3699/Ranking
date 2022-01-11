@@ -45,8 +45,7 @@ pipeline{
         }
         stage('Kubernetes Deploy'){
             steps{
-                Output = sh(script:'echo $(pwd)'
-                           script:'echo $(lsb_release -a)')
+                Output = sh(script:'echo $(pwd) & echo $(lsb_release -a)')
                 echo "from shell:  ${Output}"
                 sh "chmod +x updateTag.sh"
                 sh "./updateTag.sh ${DockerTag}"
