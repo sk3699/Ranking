@@ -46,7 +46,8 @@ pipeline{
         }
         stage('Kubernetes Deploy'){
             steps{
-                echo "from shell:  ${Output}"
+                echo "from shell 1st: "
+                sh(script:'echo $(pwd) & echo $(lsb_release -a)')
                 sh "chmod +x updateTag.sh"
                 sh "./updateTag.sh ${DockerTag}"
                 //sshagent(['sk_Ubuntu_private_key']) {
@@ -54,6 +55,8 @@ pipeline{
                 withCredentials([usernamePassword(credentialsId: 'sk_Ubuntu', passwordVariable: 'sk_Ubuntu_passwd', usernameVariable: 'sk_Ubuntu')]) {
                     //echo $(pwd)
                     //echo $(lsb_release -a)
+                    echo "from shell 2nd: "
+                    sh(script:'echo $(pwd) & echo $(lsb_release -a)')
                     sh "scp -v -p 31 -o StrictHostKeyChecking=no services.yml ranking-app-pod.yml sk@localhost:/home/sk/"
                     script{
                         try{
