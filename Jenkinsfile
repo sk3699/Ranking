@@ -57,7 +57,7 @@ pipeline{
                     //echo $(lsb_release -a)
                     echo "from shell 2nd: "
                     sh(script:'echo $(pwd) & echo $(lsb_release -a)')
-                    sh "scp -v -P 31 -o StrictHostKeyChecking=no services.yml ranking-app-pod.yml sk@localhost:/home/sk/"
+                    sh "scp -v -P 31 -o StrictHostKeyChecking=no services.yml -i ~/.ssh/id_rsa ranking-app-pod.yml sk@localhost:/home/sk/"
                     echo "from shell 3nd: "
                     sh(script:'echo $(pwd) & echo $(lsb_release -a)')
                     script{
