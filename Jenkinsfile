@@ -1,7 +1,8 @@
 currentBuild.displayName = "Ranking-#"+currentBuild.number
 
 pipeline{
-    agent { label 'U-18.04-sk' }
+    //agent { label 'U-18.04-sk' }
+    agent any
     environment {
       DockerTag = getVer()
       Output = sh(script:'echo $(pwd) & echo $(lsb_release -a)')
@@ -41,7 +42,7 @@ pipeline{
         }
         stage('Docker Deploy'){
             steps{
-                ansiblePlaybook become: true, credentialsId: 'sk_U_18.04', disableHostKeyChecking: true, extras: "-e DockerTag=${DockerTag}", installation: 'ansible_1', inventory: 'Ansible/docker_inv.inv', playbook: 'Ansible/docker_deploy.yml'
+                ansiblePlaybook become: true, credentialsId: 'sk_Ubuntu', disableHostKeyChecking: true, extras: "-e DockerTag=${DockerTag}", installation: 'ansible_1', inventory: 'Ansible/docker_inv.inv', playbook: 'Ansible/docker_deploy.yml'
             }
         }
         stage('Kubernetes Deploy'){
