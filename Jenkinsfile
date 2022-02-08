@@ -59,14 +59,14 @@ pipeline{
                     //echo "from shell 2nd: "
                     //sh(script:'echo $(pwd) & echo $(lsb_release -a)')
                     //sh "scp -v -P 31 -o StrictHostKeyChecking=no services.yml -i /home/sk/.ssh/id_rsa ranking-app-pod.yml sk@localhost:/home/sk/"
-                    sh "scp -v -P 31 -o StrictHostKeyChecking=no services.yml ranking-app-pod.yml sk@localhost:/home/sk/"
+                    sh "scp -v -P 31 -o StrictHostKeyChecking=no -p ${pass} services.yml ranking-app-pod.yml sk@localhost:/home/sk/"
                     echo "from shell 3nd: "
                     sh(script:'echo $(pwd) & echo $(lsb_release -a)')
                     script{
                         try{
-                            sh "ssh -p 31 sk@localhost apply -f ."
+                            sh "sshpass -p ${pass} ssh -p 31 sk@localhost apply -f ."
                         }catch(error){
-                            sh "ssh -p 31 sk@localhost create -f ."
+                            sh "sshpass -p ${pass} ssh -p 31 sk@localhost create -f ."
                         }
                     }
                 }
