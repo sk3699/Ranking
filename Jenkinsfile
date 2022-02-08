@@ -51,9 +51,9 @@ pipeline{
                 sh(script:'echo $(pwd) & echo $(lsb_release -a)')
                 sh "chmod +x updateTag.sh"
                 sh "./updateTag.sh ${DockerTag}"
-                sshagent(['sk_Ubuntu_p']) {
+                //sshagent(['sk_Ubuntu_p']) {
                 //withCredentials([sshUserPrivateKey(credentialsId: 'sk_Ubuntu_private_key', keyFileVariable: 'key_var', passphraseVariable: 'pass_var', usernameVariable: 'sk_for_Ubuntu')]) {
-                //withCredentials([usernamePassword(credentialsId: 'sk_Ubuntu', passwordVariable: 'sk_Ubuntu_passwd', usernameVariable: 'sk_Ubuntu')]) {
+                withCredentials([usernamePassword(credentialsId: 'sk_Ubuntu', passwordVariable: 'pass', usernameVariable: 'usr')]) {
                     //echo $(pwd)
                     //echo $(lsb_release -a)
                     echo "from shell 2nd: "
