@@ -65,9 +65,9 @@ pipeline{
                     sh(script:'echo $(pwd) & echo $(lsb_release -a)')
                     script{
                         try{
-                            sh "sshpass -p${pass} ssh -p 31 sk@localhost apply -f ."
+                            sh "sshpass -p${pass} ssh -p 31 sk@localhost kubectl apply -f ."
                         }catch(error){
-                            sh "sshpass -p${pass} ssh -p 31 sk@localhost create -f ."
+                            sh "sshpass -p${pass} ssh -p 31 sk@localhost kubectl create -f ."
                         }
                     }
                 }
